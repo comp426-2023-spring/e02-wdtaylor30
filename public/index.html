@@ -1,14 +1,13 @@
 <html>
     <head>
-        <title>RPS/LS</title>
+        <title>RPSLS</title>
         <!-- Link to your script file(s) and CSS in here somewhere -->
-        <script src="myscripts.js"></script>
-        <link rel="stylesheet" href="mystyle.css">
+        <link rel="stylesheet" href="styles.css">
     </head>
     <body>
 
     <!-- Your interface markup goes here -->
-    <form>
+    <form id="game-form">
         <h2>Select a game:</h2>
         <input type="radio" id="rps" name="game" value="rps" checked>
         <label for="rps">Rock Paper Scissors</label>
@@ -38,5 +37,6 @@
         <button type="submit" id="play">Play</button>
         <button type="button" id="reset">Reset</button>
     </form>
+        <script src="scripts.js"></script>
     </body>
 </html>
