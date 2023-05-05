@@ -8,13 +8,35 @@
     <body>
 
     <!-- Your interface markup goes here -->
-    <input type="radio" id="html" name="fav_language" value="HTML">
-    <label for="html">HTML</label><br>
-    <input type="radio" id="css" name="fav_language" value="CSS">
-    <label for="css">CSS</label><br>
-    <input type="radio" id="javascript" name="fav_language" value="JavaScript">
-    <label for="javascript">JavaScript</label>
-    <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
-
+    <form>
+        <h2>Select a game:</h2>
+        <input type="radio" id="rps" name="game" value="rps" checked>
+        <label for="rps">Rock Paper Scissors</label>
+        <input type="radio" id="rpsls" name="game" value="rpsls">
+        <label for="rpsls">Rock Paper Scissors Lizard Spock</label>
+    
+        <h2>Select opponent:</h2>
+        <input type="radio" id="computer" name="opponent" value="computer" checked>
+        <label for="computer">Computer</label>
+        <input type="radio" id="player" name="opponent" value="player">
+        <label for="player">Player</label>
+    
+        <div id="player-select">
+            <h2>Select your play:</h2>
+            <input type="radio" id="rock" name="play" value="rock" checked>
+            <label for="rock">Rock</label>
+            <input type="radio" id="paper" name="play" value="paper">
+            <label for="paper">Paper</label>
+            <input type="radio" id="scissors" name="play" value="scissors">
+            <label for="scissors">Scissors</label>
+            <input type="radio" id="lizard" name="play" value="lizard">
+            <label for="lizard">Lizard</label>
+            <input type="radio" id="spock" name="play" value="spock">
+            <label for="spock">Spock</label>
+        </div>
+    
+        <button type="submit" id="play">Play</button>
+        <button type="button" id="reset">Reset</button>
+    </form>
     </body>
 </html>
