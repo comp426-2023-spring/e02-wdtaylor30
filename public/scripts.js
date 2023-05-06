@@ -1,61 +1,40 @@
-// base url is constant
-const BASE_URL = 'http://localhost:5000/app/';
+function showHideShots() {
+    let check = document.getElementById('opponent');
+    
+    // TODO: additional check for showing all options
+    let radiorps = document.getElementsByClassName('rps shots');
 
-// dom elements
-const game = document.getElementsByName('game');
-const opponent = document.getElementsByName('opponent');
-const playerSelect = document.getElementById('player');
-const playBtn = document.getElementById('play');
-const resetBtn = document.getElementById('reset');
+    if (check.checked) {
+        $('.shots').show();
+    } else {
+        $('.shots').hide();
+    }
+}
 
-// event listeners
-playBtn.addEventListener('click', playGame);
-resetBtn.addEventListener('click', resetGame);
+function startOver() {
+    document.getElementById('userinput').reset();
+    showHideShots();
+}
 
-// functions
+// async since we're using fetch
 async function playGame() {
-    const gameType = getSelectedValue(game);
-    const opponentType = getSelectedValue(opponent)
-    const isComputer = opponentType == 'computer';
-    let play;
 
-    if (!isComputer) {
-        play = getSelectedValue(playerSelect.children);
-    }
+    // use jquery to select game
+    let game = $('input[type=radio][name=game]:checked').val();
 
-    // make API call to play the game
-    const result = await fetch(`${BASE_URL}${gameType}?opponent=${isComputer}&play=${play}`);
-    const data = await result.json();
+    // define baseurl as 'app/'
+    let baseurl = window.location.href + 'app/';
+    // ? debug
+    console.log(baseurl);
 
-    // update result text
-    resultText.innerHTML = data.result;
-  }
-  
-  function resetGame() {
-    // reset radio buttons
-    const radioButtons = document.querySelectorAll('input[type=radio]');
-    radioButtons.forEach(button => button.checked = false);
+    // construct full path
+    let url = baseurl + game + '/play/';
+    // ? debug
+    console.log(url);
 
-    // reset form
-    // document.getElementById('game-form').reset();
-    // resultText.innerHTML = '';
-  }
-  
-  function getSelectedValue(elements) {
-    for (let i = 0; i < elements.length; i++) {
-      if (elements[i].checked) {
-        return elements[i].value;
-      }
-    }
-  }
-  
-  function isCheckboxChecked(elements, value) {
-    for (let i = 0; i < elements.length; i++) {
-      if (elements[i].checked && elements[i].value === value) {
-        return true;
-      }
-    }
-  
-    return false;
-  }
-  
+    let response = await fetch(url);
+    let result = await response.json();
+    // ? debug
+    console.log(response);
+    console.log(result);
+}

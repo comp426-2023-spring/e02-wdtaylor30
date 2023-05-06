@@ -1,42 +1,47 @@
 <html>
     <head>
         <title>RPSLS</title>
+		<link href="styles.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+		<script src="scripts.js"></script>
         <!-- Link to your script file(s) and CSS in here somewhere -->
-        <link rel="stylesheet" href="styles.css">
     </head>
-    <body>
+    <body onload="showHideShots()">
+
+		<form id="userinput" class="" action="javascript:void(0);">
+			<input type="radio" id="rps" name="game" value="rps" checked="checked" onclick="showHideShots()">
+			<label for="rps">Play rock, paper, scissors?</label>
+			<br/><br/>
+			<input type="radio" id="rpsls" name="game" value="rpsls" onclick="showHideShots()">
+			<label for="rpsls">Play rock, paper, scissors, lizard, Spock?</label>
+			<br/><br/>
+			<input type="checkbox" id="opponent" name="playtype" value="opponent" onclick="showHideShots()">
+			<label for="opponent">Play against an opponent?</label>
+			<br/><br/>
+			<input type="radio" id="rock" name="shot" value=rock" class="rps shots" checked="checked">
+			<label class="shots rps">Rock</label>
+			<input type="radio" id="paper" name="shot" value="paper" class="rps shots">
+			<label class="shots rps">Paper</label>
+			<input type="radio" id="scissors" name="shot" value="scissors" class="rps shots">
+			<label class="shots rps">Scissors</label>
+			<input type="radio" id="lizard" name="shot" value="lizard" class="rpsls shots">
+			<label class="shots rpsls">Lizard</label>
+			<input type="radio" id="spock" name="shot" value="spock" class="rpsls shots">
+			<label class="shots rpsls">Spock</label>
+<!--			<br/><br/>
+			<input type="submit" id="play" name="controls" value="Play">
+      <input type="submit" id="startover" name="controls" value="Start Over"> -->
+		</form>
+		<br/><br/>
+    <button type="button" id="play" onclick="playGame()">Play</button>
+    <button type="button" id="startover" onclick="startOver()">Start Over</button>
 
     <!-- Your interface markup goes here -->
-    <form id="game-form">
-        <h2>Select a game:</h2>
-        <input type="radio" id="rps" name="game" value="rps" checked>
-        <label for="rps">Rock Paper Scissors</label>
-        <input type="radio" id="rpsls" name="game" value="rpsls">
-        <label for="rpsls">Rock Paper Scissors Lizard Spock</label>
+    <!-- For interface examples, look in the `/examples/` directory in the root of your starter code repo. -->
     
-        <h2>Select opponent:</h2>
-        <input type="radio" id="computer" name="opponent" value="computer" checked>
-        <label for="computer">Computer</label>
-        <input type="radio" id="player" name="opponent" value="player">
-        <label for="player">Player</label>
-    
-        <div id="player-select">
-            <h2>Select your play:</h2>
-            <input type="radio" id="rock" name="play" value="rock" checked>
-            <label for="rock">Rock</label>
-            <input type="radio" id="paper" name="play" value="paper">
-            <label for="paper">Paper</label>
-            <input type="radio" id="scissors" name="play" value="scissors">
-            <label for="scissors">Scissors</label>
-            <input type="radio" id="lizard" name="play" value="lizard">
-            <label for="lizard">Lizard</label>
-            <input type="radio" id="spock" name="play" value="spock">
-            <label for="spock">Spock</label>
-        </div>
-    
-        <button type="submit" id="play">Play</button>
-        <button type="button" id="reset">Reset</button>
-    </form>
-        <script src="scripts.js"></script>
+    <!-- You will want to include something hidden by default, like a <div> or <p> that you can show to -->
+    <!-- display the results of the game. Your startOver() function should also clear the result and hide -->
+    <!-- the block again. -->
+
     </body>
 </html>
