@@ -1,16 +1,14 @@
 // * IMPORTANT : When testing, run `npm test; npm start`
 // * to start both frontend and backend.
 
-// TODO: Figure out showing and hiding radio buttons. Then take
-// TODO: screenshots. You're a fighter! AGTG.
 function showHideShots() {
     let check = document.getElementById('opponent');
     let radiorps = document.getElementById('rps');
 
     if (check.checked) {
-        if (radiorps.checked){
-            // TODO: figure this out.
-            $('.shots').show();
+        if (radiorps.checked) {
+            $('.rps').show();
+            $('.rpsls').hide();
         } else {
             // show all
             $('.shots').show();
