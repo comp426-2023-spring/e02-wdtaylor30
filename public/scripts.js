@@ -1,11 +1,20 @@
+// * IMPORTANT : When testing, run `npm test; npm start`
+// * to start both frontend and backend.
+
+// TODO: Figure out showing and hiding radio buttons. Then take
+// TODO: screenshots. You're a fighter! AGTG.
 function showHideShots() {
     let check = document.getElementById('opponent');
-    
-    // TODO: additional check for showing all options
-    let radiorps = document.getElementsByClassName('rps shots');
+    let radiorps = document.getElementById('rps');
 
     if (check.checked) {
-        $('.shots').show();
+        if (radiorps.checked){
+            // TODO: figure this out.
+            $('.shots').show();
+        } else {
+            // show all
+            $('.shots').show();
+        }
     } else {
         $('.shots').hide();
     }
@@ -13,28 +22,35 @@ function showHideShots() {
 
 function startOver() {
     document.getElementById('userinput').reset();
+    document.getElementById("results").style.display = "none";
     showHideShots();
 }
 
 // async since we're using fetch
 async function playGame() {
-
-    // use jquery to select game
+    // get results ready to show
+    let results = document.getElementById("results");
+    results.style.display = "block";
+    
+    // use jquery to select game and shot
     let game = $('input[type=radio][name=game]:checked').val();
-
-    // define baseurl as 'app/'
-    let baseurl = window.location.href + 'app/';
-    // ? debug
-    console.log(baseurl);
+    let shot = $('input[type=radio][name=shot]:checked').val();
 
     // construct full path
-    let url = baseurl + game + '/play/';
-    // ? debug
-    console.log(url);
+    // have to do this manually bc the url looked weird with the
+    // in-class example
+    let url = `/app/${game}/play/${shot ? shot : ""}`;
+    
+    // for some reason the above ternary op adds a trailing quotation mark
+    // so do some regex to remove it
+    url = url.replace(/["]+/g, '');
 
     let response = await fetch(url);
     let result = await response.json();
     // ? debug
     console.log(response);
     console.log(result);
+
+    // show results
+    results.textContent = `You played: ${result.player}. Opponent played: ${result.opponent}. Result: ${result.result}`;
 }
