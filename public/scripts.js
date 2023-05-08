@@ -39,10 +39,6 @@ async function playGame() {
     // in-class example
     let url = `/app/${game}/play/${shot ? shot : ""}`;
     
-    // for some reason the above ternary op adds a trailing quotation mark
-    // so do some regex to remove it
-    url = url.replace(/["]+/g, '');
-
     let response = await fetch(url);
     let result = await response.json();
     // ? debug
