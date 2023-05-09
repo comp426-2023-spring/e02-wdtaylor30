@@ -107,7 +107,7 @@ process.on('SIGINT', () => {
 import { playRPS, playRPSLS } from './lib/rpsls.js';
 
 // check endpoints
-app.get('/app', (req, res) => {
+app.get('/app/', (req, res) => {
     res.status(200).send('200 OK');
 });
 
